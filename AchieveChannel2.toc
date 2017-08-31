@@ -1,0 +1,16 @@
+## Interface: 60000
+## Author: Siku @ Sentinels US
+## eMail: chaoslux [at] gmail [dot] com
+## Version: 2.1.1
+## SavedVariables: AchieveChannelDB
+## OptionalDeps: Ace3
+
+## Title: Achieve Channel 2
+## Notes: Allows you to send Achievement Earned messages to custom channels.
+## Title-enUS: Achieve Channel 2
+## Notes-enUS: Allows you to send Achievement Earned messages to custom channels.
+
+embeds.xml
+locales.xml
+
+AchieveChannel.lua
