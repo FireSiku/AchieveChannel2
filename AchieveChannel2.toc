@@ -1,7 +1,7 @@
-## Interface: 60000
+## Interface: 70300
 ## Author: Siku @ Sentinels US
 ## eMail: chaoslux [at] gmail [dot] com
-## Version: 2.1.1
+## Version: 2.2
 ## SavedVariables: AchieveChannelDB
 ## OptionalDeps: Ace3
 
