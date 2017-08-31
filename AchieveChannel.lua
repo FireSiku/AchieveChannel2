@@ -17,11 +17,10 @@ local db
 
 local format, pairs = format, pairs
 local strlower, strfind = string.lower, string.find
-local UnitName = UnitName
+local GetAchievementInfo = GetAchievementInfo
 local UnitIsInMyGuild = UnitIsInMyGuild
 local SendChatMessage = SendChatMessage
 local GetChannelName = GetChannelName
-local GetAchievementInfo = GetAchievementInfo
 
 local activeChanList = {}
 local optionChanList = {}
@@ -77,10 +76,11 @@ local function filterFunc(ChatFrameSelf, event, msg, nick, ...)
 	end
 end
 
+local serverList
 local function IsOfficialChannel(chanName)
-	local serverChan = { EnumerateServerChannels() }
-	for i=1, #serverChan do
-		if chanName == serverChan[i] then return true end
+	if not serverList then serverList = { EnumerateServerChannels() } end
+	for i=1, #serverList do
+		if chanName == serverList[i] then return true end
 	end
 	--Hack: Enumate doesn't list Trade Chat, add it manually
 	if chanName == "Trade" then return true end
@@ -88,19 +88,19 @@ end
 
 local function RefreshChannelList()
 	local aclist = { GetChannelList() }
-	activeChanList = {}
+	wipe(activeChanList)
 	--Odd numbered returns are used for channel numbers. We just want the names.
 	for i=2, #aclist, 2 do
 		if not IsOfficialChannel(aclist[i]) then
 			--Add channel to active list.
 			activeChanList[#activeChanList+1] = aclist[i]
-		end
+		end-
 	end
 end
 
 local function RefreshAnnounceList()
 	--Keeping a list of announced channels prevents having to check all channels for Enabled
-	announceChanList = {}
+	wipe(announceChanList)
 	for i=1, #activeChanList do
 		if db.chanList[ strlower( activeChanList[i] ) ].Enable then
 			announceChanList[#announceChanList+1] = activeChanList[i]
