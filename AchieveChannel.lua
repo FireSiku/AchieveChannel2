@@ -94,7 +94,7 @@ local function RefreshChannelList()
 		if not IsOfficialChannel(aclist[i]) then
 			--Add channel to active list.
 			activeChanList[#activeChanList+1] = aclist[i]
-		end-
+		end
 	end
 end
 
