@@ -90,7 +90,7 @@ local function RefreshChannelList()
 	local aclist = { GetChannelList() }
 	wipe(activeChanList)
 	--Odd numbered returns are used for channel numbers. We just want the names.
-	for i=2, #aclist, 2 do
+	for i=2, #aclist, 3 do
 		if not IsOfficialChannel(aclist[i]) then
 			--Add channel to active list.
 			activeChanList[#activeChanList+1] = aclist[i]
